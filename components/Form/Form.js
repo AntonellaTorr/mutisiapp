@@ -14,7 +14,7 @@ export default function Form() {
   const postCerveza = async (endpoint, data) => {
   try {
     console.log(endpoint);
-    const response = await fetch(`${'http:/192.168.0.11:3000/api/'}${endpoint}`, {
+    const response = await fetch(`${'http:/192.168.0.15:3000/api/'}${endpoint}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -47,6 +47,7 @@ export default function Form() {
         nombre,
         amargor,
         graduacion: parseFloat(graduacion),
+        detalle,
       };
 
       const response = await postCerveza('cervezas', data);
@@ -92,8 +93,16 @@ export default function Form() {
             { label: 'Suave', value: 'Suave' },
             { label: 'Medio', value: 'Medio' },
           ]}
-          style={pickerSelectStyles} // Aplicar estilos aquí
-          placeholder={placeholder} // Definir el placeholder aquí
+          style={pickerSelectStyles} 
+          placeholder={placeholder} 
+        />
+        
+        <TextInput
+          style={styles.input}
+          placeholder="Ingrese el detalle"
+          placeholderTextColor={"white"}
+          onChangeText={setDetalle}
+          value={detalle}
         />
 
 

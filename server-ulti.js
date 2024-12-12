@@ -66,7 +66,7 @@ app.post("/api/cervezas", (req, res) => {
         amargor: req.body.amargor,
         graduacion: req.body.graduacion,
         image: req.body.image || '/assets/cervecitalogo.png', // Imagen por defecto
-        detalle: req.body.detalle || '', // Detalle opcional
+        detalle: req.body.detalle || '' || null, // Detalle opcional
     };
     validarCerveza(cerveza);
     cervezas.push(cerveza);
@@ -106,7 +106,7 @@ function validarCerveza(cerveza) {
         amargor: Joi.string().valid('Suave', 'Bajo', 'Medio').required(),
         graduacion: Joi.number().required(), 
         image: Joi.string().optional(), // Ahora opcional
-        detalle: Joi.string().optional(), // Ahora opcional
+        detalle: Joi.string().optional().allow(null), // Ahora opcional
     });
     return schema.validate(cerveza);
 }

@@ -10,7 +10,7 @@ const CervezaDetalle = ({ route }) => {
   }, [item]);
 
   const fetchCerveza = async (codigo) => {
-    const ip = 'http://192.168.0.11:3000/api/';
+    const ip = 'http://192.168.0.15:3000/api/';
     try {
       const response = await fetch(`${ip}cervezas/${codigo}`);
       if (!response.ok) {
