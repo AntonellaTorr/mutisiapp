@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const cors = require('cors');
 
+
 app.use(express.json());
 app.use(cors()); 
 
@@ -65,11 +66,12 @@ app.post("/api/cervezas", (req, res) => {
         nombre: req.body.nombre,
         amargor: req.body.amargor,
         graduacion: req.body.graduacion,
-        image: req.body.image || '/assets/cervecitalogo.png', // Imagen por defecto
+        image: 'assets/nuevaa.jpg', // Imagen por defecto
         detalle: req.body.detalle || '' || null, // Detalle opcional
     };
     validarCerveza(cerveza);
     cervezas.push(cerveza);
+
     res.send(cerveza);
 });
 

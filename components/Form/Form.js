@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Text, TextInput, TouchableOpacity, View, StyleSheet ,Alert} from "react-native";
+
 import RNPickerSelect from 'react-native-picker-select';
+import Constants from "expo-constants";
 
 
-
-export default function Form() {
+export default function Form({ navigation }) {
   const [amargor, setAmargor] = useState(null);
   const [nombre, setNombre] = useState("");
   const [graduacion, setGraduacion] = useState(null);
@@ -51,8 +52,8 @@ export default function Form() {
       };
 
       const response = await postCerveza('cervezas', data);
-
       Alert.alert('Cerveza registrada', `Se ha registrado la cerveza ${response.nombre}`);
+      navigation.navigate('CervezaLista', { newCerveza: response });
       setNombre('');
       setAmargor(null);
       setGraduacion('');
