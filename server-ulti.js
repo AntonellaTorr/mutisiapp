@@ -29,6 +29,12 @@ app.get("/api/cervezas", (req, res) => {
     const cantidadDeseada = parseInt(req.query.cantidad);
     const inicio = parseInt(req.query.from) || 0;
 
+    
+    if (cantidadDeseada === null) {
+        // Si no se especifica cantidad, devolver todas las cervezas
+        return res.status(200).send(cervezas);
+    }
+
     if (isNaN(cantidadDeseada) || cantidadDeseada <= 0) {
         return res.status(400).send("La cantidad debe ser un número entero positivo.");
     }
