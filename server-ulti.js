@@ -26,13 +26,15 @@ const cervezas = [
 // Método GET para obtener todas las cervezas con paginación
 app.get("/api/cervezas", (req, res) => {
     console.log("en el get");
-    const cantidadDeseada = parseInt(req.query.cantidad);
+    const cantidadDeseada = req.query.cantidad ? parseInt(req.query.cantidad) : null;
     const inicio = parseInt(req.query.from) || 0;
 
-    
+
+
     if (cantidadDeseada === null) {
         // Si no se especifica cantidad, devolver todas las cervezas
-        return res.status(200).send(cervezas);
+        console.log("no se especifico")
+        return res.status(200).json(cervezas);
     }
 
     if (isNaN(cantidadDeseada) || cantidadDeseada <= 0) {

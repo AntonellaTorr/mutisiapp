@@ -15,7 +15,7 @@ export default function Form({ navigation }) {
   const postCerveza = async (endpoint, data) => {
   try {
     console.log(endpoint);
-    const response = await fetch(`${'http:/192.168.0.15:3000/api/'}${endpoint}`, {
+    const response = await fetch(`${'http:/192.168.0.11:3000/api/'}${endpoint}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

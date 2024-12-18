@@ -35,8 +35,8 @@ const CervezaLista = ({ navigation, route }) => {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const ip = 'http://192.168.0.15:3000/api/';
-      const response = await fetch(`${ip}cervezas?cantidad=5&from=${(page - 1) * 5}`);
+      const ip = 'http://192.168.0.11:3000/api/';
+      const response = await fetch(`${ip}cervezas`);
       const json = await response.json();
   
       // Evitar duplicados comparando por el id de cada cerveza
@@ -56,7 +56,7 @@ const CervezaLista = ({ navigation, route }) => {
     return (
       <CervezaItem
         name={item.nombre}
-        image={{ uri: `http://192.168.0.15:3000${item.image}` }} // Asegúrate de que la URL de la imagen esté bien formada
+        image={{ uri: `http://192.168.0.11:3000${item.image}` }} // Asegúrate de que la URL de la imagen esté bien formada
         onPress={() => navigation.navigate('CervezaDetalle', { item })}
       />
     );
